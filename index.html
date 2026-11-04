@@ -1,1 +1,87 @@
 
+<!DOCTYPE html>
+<html lang="ht">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#071321">
+<title>GLOBAL OSINT DATABASE</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#071321;color:#edf5ff;font-family:Arial,sans-serif}
+header{background:#10263d;padding:24px 16px;text-align:center;border-bottom:1px solid #245071}
+header h1{color:#42c8ff;font-size:24px;margin:5px}
+header p{color:#a9c2d5}
+main{max-width:760px;margin:auto;padding:20px}
+.card{background:#10263d;border:1px solid #245071;border-radius:13px;padding:18px;margin-bottom:17px}
+h2{color:#42c8ff}
+input,select{width:100%;padding:14px;margin:8px 0;background:#071321;color:white;border:1px solid #42637b;border-radius:8px;font-size:16px}
+button{background:#087db8;color:white;border:0;padding:13px 18px;border-radius:8px;font-size:16px;cursor:pointer}
+button:focus,input:focus{outline:2px solid #42c8ff}
+.links a{display:block;color:#42c8ff;padding:10px 0;text-decoration:none}
+small{color:#a9c2d5}
+footer{text-align:center;color:#91a9bb;padding:25px}
+</style>
+</head>
+<body>
+<header>
+<h1>🌍 GLOBAL OSINT</h1>
+<p>Public Information Research Database</p>
+<small>Research • Verification • Archives</small>
+</header>
+<main>
+<section class="card">
+<h2>🔎 Rechèch mondyal</h2>
+<p>Chèche sous piblik sou yon moun piblik oswa yon sijè.</p>
+<input id="query" placeholder="Ekri non oswa sijè a">
+<select id="country">
+<option value="">Tout peyi</option>
+<option>Haïti</option>
+<option>United States</option>
+<option>France</option>
+<option>Canada</option>
+<option>El Salvador</option>
+</select>
+<button onclick="search()">Lanse rechèch</button>
+</section>
+<section class="card">
+<h2>📚 Sous rechèch piblik</h2>
+<div class="links">
+<a href="https://www.google.com/" target="_blank" rel="noopener">Google Search</a>
+<a href="https://www.wikidata.org/" target="_blank" rel="noopener">Wikidata</a>
+<a href="https://www.worldcat.org/" target="_blank" rel="noopener">WorldCat Archives</a>
+<a href="https://www.loc.gov/" target="_blank" rel="noopener">Library of Congress</a>
+<a href="https://www.un.org/" target="_blank" rel="noopener">United Nations</a>
+<a href="https://www.icij.org/" target="_blank" rel="noopener">ICIJ Investigations</a>
+</div>
+</section>
+<section class="card" id="results">
+<h2>Rezilta rechèch</h2>
+<p>Rezilta yo ap parèt isit la.</p>
+<small>Verifye enfòmasyon yo nan sous orijinal yo. Yon rezilta rechèch pa prèv idantite.</small>
+</section>
+</main>
+<footer>GLOBAL OSINT DATABASE © 2026</footer>
+<script>
+function search(){
+const q=document.getElementById('query').value.trim();
+const country=document.getElementById('country').value;
+if(!q){alert('Tanpri antre yon non oswa yon sijè.');return;}
+const term=q+(country?' '+country:'');
+const url='https://www.google.com/search?q='+encodeURIComponent(term+' public information');
+const results=document.getElementById('results');
+results.innerHTML='';
+const title=document.createElement('h2');
+title.textContent='Rezilta rechèch pou: '+term;
+const link=document.createElement('a');
+link.href=url;
+link.target='_blank';
+link.rel='noopener';
+link.textContent='Louvri sous rechèch piblik yo';
+link.style.color='#42c8ff';
+results.append(title,link);
+}
+</script>
+</body>
+</html>
+
